@@ -1,5 +1,7 @@
 # PyForge
 
+![tests](https://github.com/ovrlust/pyforge/actions/workflows/test.yml/badge.svg)
+
 Python source-to-native compiler: AST obfuscation, Cython compilation, and runtime anti-tampering.
 
 ---
