@@ -29,17 +29,23 @@ Python source-to-native compiler: AST obfuscation, Cython compilation, and runti
 ## Pipeline
 
 ```mermaid
-flowchart LR
-    A[Source .py] --> B[AST analysis\ncompat check]
-    B --> C[Obfuscator\nrename · encrypt strings\nflatten control flow]
-    C --> D[Cython backend\nPython → C]
-    D --> E[Protection injection\nanti-debug · self-hash C]
-    E --> F[C compiler\nclang / gcc]
-    F --> G[Self-hash patch\ntwo-pass SHA-256]
-    G --> H{Mode}
-    H --> I[Packager\n.exe / .app / .dmg / bin]
-    H --> J[Packer\nChaCha20 encrypted stub]
-    H --> K[Standalone\nbundled stdlib payload]
+flowchart TD
+    A(["`**Source .py**`"]) --> B["`**AST Analysis**
+    compat check`"]
+    B --> C["`**Obfuscator**
+    rename · encrypt strings · flatten`"]
+    C --> D["`**Cython Backend**
+    Python → C`"]
+    D --> E["`**Protection Injection**
+    anti-debug · self-hash`"]
+    E --> F["`**C Compiler**
+    clang / gcc`"]
+    F --> G["`**Self-Hash Patch**
+    two-pass SHA-256`"]
+    G --> H{"`**Output Mode**`"}
+    H --> I(["`**.exe / .app / .dmg / bin**`"])
+    H --> J(["`**ChaCha20 encrypted stub**`"])
+    H --> K(["`**Standalone — bundled stdlib**`"])
 ```
 
 ---
